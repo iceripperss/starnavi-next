@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Тестове завдання на позицію React Developer
 
-## Getting Started
+## Мета завдання
 
-First, run the development server:
+Створити веб-додаток, який дозволить користувачам переглядати список героїв Star Wars, а також детальну інформацію про космічні кораблі та фільми, пов'язані з кожним героєм. Додаток повинен використовувати останню версію Next.js для структури додатку, Axios для запитів до API та React Flow для візуалізації інформації у вигляді графа.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Основні вимоги
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Список героїв
+- Використовуючи API `sw-api.starnavi.io`, відобразіть список усіх героїв Star Wars.
+- Список повинен бути пагінованим або мати можливість infinite scroll, за вашим вибором.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Детальна інформація про героя
+- При кліку на конкретного героя відображайте детальну інформацію у вигляді графа, де:
+    - Головна нода - обраний герой.
+    - Від героя ведуть зв'язки до фільмів, у яких він з'являється.
+    - Від кожного фільму ведуть зв'язки до космічних кораблів, на яких герой подорожував.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Технології
 
-## Learn More
+- **Основний фреймворк**: Next.js
+- **Запити до API**: Axios (рекомендується, але можна обрати інший)
+- **UI бібліотека**: Chakra UI або Tailwind (за вибором)
+- **Візуалізація графів**: React Flow
+- **Тестування**: Jest або ViTest
+- **Буде плюсом**: використання turborepo
 
-To learn more about Next.js, take a look at the following resources:
+## Як працювати з StarWars API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Можна ознайомитись за посиланням: [sw-api.starnavi.io/documentation](https://sw-api.starnavi.io/documentation)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## На що ми звертаємо увагу під час перевірки вашого завдання
 
-## Deploy on Vercel
+1. **Код**
+    - Чистий, добре структурований та коментований код.
+    - Коментарі написані англійською мовою.
+    - Іменування модулів, класів, функцій та змінних повинно бути зрозумілим не тільки вам, але й іншим розробникам. Рекомендується використовувати повні імена та уникати скорочень.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Тести**
+    - Основні компоненти та логіка повинні бути покриті юніт-тестами.
+    - При запуску тестів не повинно відбуватися запитів на API.
+   
+3. **SOLID, DRY, KISS**
+    - Дотримання принципів SOLID, DRY, KISS при розробці завдання та в цілому.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. **Архітектура**
+    - Використання патернів проектування там, де це доцільно.
+    
+
+## Очікуваний результат
+
+- Посилання на GitHub/GitLab з вихідним кодом проекту, тестовими сценаріями, README з інструкціями з запуску проекту та тестів.
+- Посилання на розгорнуту версію вашого завдання на [vercel.com](https://vercel.com/) для візуального огляду.
+- Додатковий бонус, якщо ви знімете коротке відео англійською з презентацією роботи вашої системи і поясненням вашого підходу до реалізації.
+    - Відео потрібно, щоб швидше зрозуміти, як ви можете пояснювати свої думки і рішення, оскільки комунікація дуже важлива при роботі в команді.
+    - Для запису відео ви можете використовувати [loom.com](https://loom.com) або безкоштовну альтернативу [screenity](https://chrome.google.com/webstore/detail/screenity-screen-recording/).
+
+## Додатково
+
+- Приділіть увагу UX/UI додатку. Інтерфейс повинен бути інтуїтивно зрозумілим та зручним для користувача.
+- Можливість перегляду деталей без перезавантаження сторінки буде плюсом.
+
+Бажаємо успіху!
