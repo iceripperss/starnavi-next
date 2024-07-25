@@ -1,31 +1,48 @@
 "use client";
 
 import React from 'react';
-import {getHeroes} from "@/api/getHeroes";
-import styles from "@/app/page.module.css";
+import {getHeroes} from "@/api/api";
+import {HeroWithLink} from "@/components/Hero";
 
 export const Heroes = ({serverHeroes}) => {
     const [heroes, setHeroes] = React.useState(serverHeroes);
     const [page, setPage] = React.useState(1);
 
-    const handlePage = async () => {
-        setPage(page + 1);
-        const newHeroes = await getHeroes({page: (page + 1).toString()});
+    const fetchHeroes = async (page:number) => {
+        const newHeroes = await getHeroes({page});
         setHeroes(newHeroes);
+    }
+
+    const handleNextPage = async () => {
+        setPage((prev) => prev + 1);
+        await fetchHeroes(page + 1);
     };
 
+    const handlePreviousPage = async () => {
+        setPage((prev) => prev - 1);
+        await fetchHeroes(page - 1);
+    }
+
     return (
-        <div>
+        <div className="container mx-auto p-4">
             {heroes.results.map((hero) => (
-                <div key={hero.id} className={styles.card}>
-                    <h2>{hero.name}</h2>
-                    <p>Height: {hero.height}</p>
-                    <p>Mass: {hero.mass}</p>
-                    <p>Eye color: {hero.eye_color}</p>
-                    <p>Birth year: {hero.birth_year}</p>
-                </div>
+               <HeroWithLink key={hero.id} hero={hero} />
             ))}
-            <button className={styles.button} onClick={handlePage}>Current page: {page}</button>
+            <div className="flex justify-between items-center mt-4">
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={handlePreviousPage}
+                >
+                    Previous page
+                </button>
+                <div className="text-gray-700">Current page: {page}</div>
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={handleNextPage}
+                >
+                    Next page
+                </button>
+            </div>
         </div>
     );
 };
